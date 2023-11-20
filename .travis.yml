@@ -1,0 +1,11 @@
+language: go
+os: linux
+git:
+  depth: 1
+
+jobs:
+  include:
+    - script:
+        - go build -o main main.go
+        - go run main.go
+        - echo 'done'

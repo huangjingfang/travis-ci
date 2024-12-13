@@ -1,0 +1,21 @@
+when:
+  - event: push
+    branch: main
+
+steps:
+  - name: start
+    image: debian
+    commands:
+      - echo "This is the build step"
+      - echo "binary-data-123" > executable
+  - name: build
+    image: golang:1.21
+    commands:
+      - echo "Building ..."
+      - go build main.go -o main
+
+  - name: run
+    image: debian
+    commands:
+      - echo "Running ..."
+      - ./main
